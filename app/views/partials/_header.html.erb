@@ -1,0 +1,28 @@
+<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top affix">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+
+                <%=link_to "Geotrotter", root_url, class: "navbar-brand"%>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                        <%=link_to "About", about_path%>
+                    </li>
+                    <li class="">
+                        <a href="#">Log In</a>
+                    </li>
+                    <li class="">
+                        <%=link_to "Sign up", signup_path%>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>

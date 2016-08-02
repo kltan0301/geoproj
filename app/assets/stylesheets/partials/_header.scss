@@ -1,0 +1,37 @@
+body {
+  padding-top: 60px;
+}
+.navbar-custom {
+  background: #363636;
+  border: none;
+
+  a.navbar-brand {
+    font-size: 2em;
+    color: #EB641E;
+
+    &:hover {
+      color: #FD9308;
+    }
+  }
+
+  .navbar-nav {
+    li > a {
+      color: white;
+      font-size: 1.2em;
+      &:hover {
+        color: #A2A9AF;
+      }
+    }
+  }
+  button.navbar-toggle {
+    background-color: none;
+    color: white;
+    border: 4px solid white;
+    font-size: 1.2em;
+    
+    &:hover {
+      background-color: none;
+      color: #A2A9AF;
+    }
+  }
+}
