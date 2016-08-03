@@ -1,0 +1,13 @@
+<%if review.id == @reviews.count%>
+  <div class="reviewLast">
+<%else%>
+  <div class="review">
+<%end%>
+  <img src="https://avatars3.githubusercontent.com/u/727481?v=3&s=80"/>
+  <div class="text">
+    <h3><%=review.user.username%></h3>
+    <h4>Title: <%=review.title%></h4>
+    <p>Comments: <%=review.comments%></p>
+    <p>Rating: <%=review.rating%>/5</p>
+  </div>
+</div>

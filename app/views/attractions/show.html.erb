@@ -8,26 +8,24 @@
         <h3>Name: <%=@attraction.name%></h3>
         <p class="description">Description: <%=@attraction.description%></p>
         <p class="description">Category: <%=@attraction.category%></p>
-        <p class="ratingText">Rating: 4 / 5 stars</p>
-        <button type="button" class="btn
-btn-primary">Add Review</button>
+        <p class="ratingText">Rating:
+          <%
+          if @reviews.any?
+          total = @reviews.pluck(:rating)
+          average = total.inject{ |sum, el| sum + el }.to_f / total.size%>
+          <%=average.to_d.round(1, :truncate).to_f%>
+           <%else%>
+            -
+           <%end%>
+           / 5 stars</p>
+      <%=link_to "Add Review", new_review_path(attraction_id: @attraction.id), class:'btn btn-primary'%>  
       </div>
     </div>
     <div class="col-md-8 col-md-offset-1 sideContainer right">
-      <%if @attraction.reviews.count <= 0 %>
+      <% if @reviews.any? %>
+        <%= render @reviews%>
+      <%else%>
         <h3>There are currently no reviews for this place.</h3>
-      <%else
-        (0..2).each do |i|%>
-          <div class="review">
-            <img src="https://avatars3.githubusercontent.com/u/727481?v=3&s=80"/>
-            <div class="text">
-              <h3><%=@attraction.reviews["#{i}"].user.username%></h3>
-              <h4>Title: 'Insane fun'</h4>
-              <p>Comments: One day isin't enough!</p>
-              <p>Rating: 5/5</p>
-            </div>
-          </div>
-      <% end%>
       <%end%>
     </div>
   </div>
