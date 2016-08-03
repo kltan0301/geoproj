@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.2'
 #gems for geo data
 gem 'geocoder'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+gem 'underscore-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

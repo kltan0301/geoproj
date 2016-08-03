@@ -5,10 +5,10 @@ class AttractionsController < ApplicationController
   # GET /attractions.json
   def index
     @attractions = Attraction.all
-    @hash = Gmaps4rails.build_markers(@attraction) do |attraction, marker|
-      marker.lat user.latitude
-      marker.lng user.longitude
-      marker.infowindow "<a href='www.google.com'>#{user.title}</a>"
+    @hash = Gmaps4rails.build_markers(@attractions) do |attraction, marker|
+      marker.lat attraction.latitude
+      marker.lng attraction.longitude
+      marker.infowindow "<a href=/attractions/#{attraction.id}>View reviews</a>"
     end
   end
 
@@ -74,6 +74,6 @@ class AttractionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def attraction_params
-      params.require(:attraction).permit(:latitude, :longitude, :address, :description, :category)
+      params.require(:attraction).permit(:latitude, :longitude, :address, :description, :category, :name)
     end
 end

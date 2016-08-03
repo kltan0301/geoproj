@@ -1,19 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Username:</strong>
+<% provide(:title, @user.username) %>
+<h1>
+  <%= gravatar_for @user %>
   <%= @user.username %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</h1>
