@@ -1,34 +1,34 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, "Attractions") %>
+<div class="container containerCustom">
+  <div class="row">
+    <div class="col-md-3 sideContainer left">
+      <div class="text_container">
+        <img src="http://www.rwsentosa.com/Portals/0/RWS%20Revamp/USS/Landing%20page/FFA-240x140.jpg" alt="USS" />
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @attraction.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @attraction.longitude %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @attraction.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @attraction.address %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @attraction.description %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @attraction.category %>
-</p>
-
-<%= link_to 'Edit', edit_attraction_path(@attraction) %> |
-<%= link_to 'Back', attractions_path %>
+        <h3>Name: <%=@attraction.name%></h3>
+        <p class="description">Description: <%=@attraction.description%></p>
+        <p class="description">Category: <%=@attraction.category%></p>
+        <p class="ratingText">Rating: 4 / 5 stars</p>
+        <button type="button" class="btn
+btn-primary">Add Review</button>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-1 sideContainer right">
+      <%if @attraction.reviews.count <= 0 %>
+        <h3>There are currently no reviews for this place.</h3>
+      <%else
+        (0..2).each do |i|%>
+          <div class="review">
+            <img src="https://avatars3.githubusercontent.com/u/727481?v=3&s=80"/>
+            <div class="text">
+              <h3><%=@attraction.reviews["#{i}"].user.username%></h3>
+              <h4>Title: 'Insane fun'</h4>
+              <p>Comments: One day isin't enough!</p>
+              <p>Rating: 5/5</p>
+            </div>
+          </div>
+      <% end%>
+      <%end%>
+    </div>
+  </div>
+</div>

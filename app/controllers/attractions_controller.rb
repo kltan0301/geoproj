@@ -8,7 +8,11 @@ class AttractionsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@attractions) do |attraction, marker|
       marker.lat attraction.latitude
       marker.lng attraction.longitude
-      marker.infowindow "<a href=/attractions/#{attraction.id}>View reviews</a>"
+      marker.infowindow "<div class='attDetails'>
+        <h4>Name: #{attraction.name}</h4>
+        <img src='http://www.e-perpustakaan.com/wp-content/uploads/2015/07/Jurong-Bird-Park-Address-Singapore.jpg' alt='birdpark' />
+        <a href=/attractions/#{attraction.id}>View reviews</a>
+      </div>"
     end
   end
 

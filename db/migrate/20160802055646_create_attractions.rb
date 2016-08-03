@@ -7,7 +7,8 @@ class CreateAttractions < ActiveRecord::Migration[5.0]
       t.string :address
       t.text :description
       t.string :category
-
+      t.string :image_url
+      
       t.timestamps
     end
   end

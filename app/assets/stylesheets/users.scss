@@ -16,7 +16,7 @@
   }
   .submitBtn {
     background-color: none;
-    margin-top:3%;
+    margin:3%;
     border: 4px solid black;
     padding: 10px;
   }
@@ -24,7 +24,20 @@
 .form-title {
   margin-top: 5%;
   color: white;
+  font-family: 'Oswald', sans-serif;
 }
 img.gravatar {
   border-radius: 50%;
+}
+.signup_text {
+  font-size: 0.8em;
+
+  a{
+    color: #696969;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
 }

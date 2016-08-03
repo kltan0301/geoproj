@@ -12,3 +12,63 @@
     width: 100%;
   }
 }
+.attDetails {
+  text-align: center;
+  img {
+    height:150px;
+    width: 150px;
+  }
+  a {
+    margin: 10px;
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.containerCustom{
+  margin-top: 5%;
+
+  .sideContainer {
+    border-radius: 10px;
+    height: 500px;
+    background: rgba(255,255,255,0.5);
+    text-align: center;
+    .text_container{
+      margin-top: 15%;
+    }
+    img {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .description{
+      color: #454955;
+    }
+    .ratingText {
+      color: #3F7D20;
+    }
+  }
+  .review {
+    text-align: left;
+    margin: 0 10px;
+    border-bottom: 2px solid black;
+    img {
+      vertical-align: top;
+      height: 80px;
+      width: 80px;
+    }
+    .text {
+      display: inline-block;
+      margin-left: 5%;
+    }
+  }
+  .right {
+    overflow: scroll;
+  }
+}
