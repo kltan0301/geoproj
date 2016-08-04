@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802060815) do
+ActiveRecord::Schema.define(version: 20160804014446) do
 
   create_table "attractions", force: :cascade do |t|
     t.float    "latitude"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160802060815) do
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

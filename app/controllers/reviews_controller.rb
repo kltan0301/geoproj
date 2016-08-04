@@ -15,39 +15,39 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+    @attraction = Attraction.find(params[:attraction_id])
   end
 
   # GET /reviews/1/edit
   def edit
+    @review = Review.find(params[:id])
+    @attraction = @review.attraction
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.build(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.save
+      flash[:success] = "Review has been added."
+      redirect_to attraction_path(@review.attraction.id)
+    else
+      flash.now[:danger] = "Review could not be added."
+      render 'static_pages/home'
     end
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    @review = Review.find(params[:id])
+
+    if @review.update_attributes(review_params)
+      flash[:success] = "Review has been updated"
+      redirect_to @review.attraction
+    else
+      redirect_to root_url
     end
   end
 
@@ -55,10 +55,8 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:info] = "Post has been deleted."
+    redirect_to request.referrer || root_url
   end
 
   private

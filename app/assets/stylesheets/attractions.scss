@@ -57,6 +57,7 @@
   .review, .reviewLast {
     text-align: left;
     margin: 0 10px;
+    padding: 20px;
     img {
       vertical-align: top;
       height: 80px;
@@ -66,9 +67,6 @@
       display: inline-block;
       margin-left: 5%;
     }
-  }
-  .review {
-    border-bottom: 2px solid black;
   }
   .right {
     overflow: scroll;

@@ -1,3 +1,26 @@
+<% provide(:title, "New review") %>
+<div class="container containerCustom">
+  <div class="row">
+    <div class="col-md-3 sideContainer left">
+      <div class="text_container">
+        <img src="http://www.rwsentosa.com/Portals/0/RWS%20Revamp/USS/Landing%20page/FFA-240x140.jpg" alt="USS" />
+
+        <h3>Name: <%=@attraction.name%></h3>
+        <p class="description">Description: <%=@attraction.description%></p>
+        <p class="description">Category: <%=@attraction.category%></p>
+        <p class="ratingText">Rating:
+          <%
+          if @attraction.reviews.any?
+          total = @attraction.reviews.pluck(:rating)
+          average = total.inject{ |sum, el| sum + el }.to_f / total.size%>
+          <%=average.to_d.round(1, :truncate).to_f%>
+           <%else%>
+            -
+           <%end%>
+           / 5 stars</p>
+      </div>
+    </div>
+<div class="col-md-8 col-md-offset-1 sideContainer right">
 <%= form_for(review) do |f| %>
   <% if review.errors.any? %>
     <div id="error_explanation">
@@ -10,33 +33,31 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="user_form">
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "Enter a caption here.", class:"form-control form-custom"%>
   </div>
 
   <div class="field">
     <%= f.label :comments %>
-    <%= f.text_field :comments %>
+    <%= f.text_area :comments, class:"form-control form-custom" %>
   </div>
 
   <div class="field">
     <%= f.label :rating %>
-    <%= f.number_field :rating %>
+    <%= f.number_field :rating , max: "5", min: "0", value:"0", class:"form-control form-custom"%>
   </div>
 
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :attraction_id %>
-    <%= f.text_field :attraction_id %>
+    <%= f.hidden_field :attraction_id, value: @attraction.id%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class:"submitBtn"%>
   </div>
+</div>
 <% end %>
+</div>
+</div>
+</div>
