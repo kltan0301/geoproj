@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update]
+  before_action :require_logout, only: [:new]
 
   # GET /users
   # GET /users.json
@@ -30,8 +32,8 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the sample app!"
-      redirect_to @user
+      flash[:success] = "Welcome to geotrotter!"
+      redirect_to attractions_url
     else
       render 'new'
     end
@@ -70,5 +72,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation, :email)
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

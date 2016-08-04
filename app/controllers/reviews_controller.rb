@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :edit, :create, :destroy]
 
   # GET /reviews
   # GET /reviews.json
@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    @review = Review.find(params[:id])
   end
 
   # GET /reviews/new
@@ -55,7 +56,7 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    flash[:info] = "Post has been deleted."
+    flash[:info] = "Review has been deleted."
     redirect_to request.referrer || root_url
   end
 
