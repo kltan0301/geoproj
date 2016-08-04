@@ -18,7 +18,9 @@
             -
            <%end%>
            / 5 stars</p>
-      <%=link_to "Add Review", new_review_path(attraction_id: @attraction.id), class:'btn btn-primary'%>
+      <%if logged_in?%>
+        <%=link_to "Add Review", new_review_path(attraction_id: @attraction.id), class:'btn btn-primary'%>
+      <%end%>
       </div>
     </div>
     <div class="col-md-8 col-md-offset-1 sideContainer right">
