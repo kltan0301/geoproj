@@ -6,6 +6,7 @@
   <%=link_to gravatar_for(review.user, 50)%>
   <div class="text">
     <h3><%=review.user.username%></h3>
+    <h4>Attraction: <%=review.attraction.name%></h4>
     <h4>Title: <%=review.title%></h4>
     <p>Comments: <%=review.comments%></p>
     <p>Rating: <%=review.rating%>/5</p>
@@ -17,7 +18,7 @@
       <p>
         <%=link_to "Edit", edit_review_path(review)%> |
         <%=link_to "Delete", review, method: :delete, data: {confirm: "Are you sure you want to delete this post?"}%>
-      </p>  
+      </p>
     <%end%>
   <%end%>
   </div>

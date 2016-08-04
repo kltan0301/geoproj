@@ -1,10 +1,11 @@
-<% provide(:title, @user.username) %>
+<%@capsuname = @user.username.slice(0,1).capitalize + @user.username.slice(1..-1)%>
+<% provide(:title, @capsuname) %>
 <div class="container containerCustom">
   <div class="row">
     <div class="col-md-3 sideContainer left">
         <div class="text_container">
           <%= gravatar_for @user %>
-          <h1><%= @user.username %></h1>
+          <h1><%= @capsuname %></h1>
           <p>Email: <%=@user.email%></p>
           <p>Joined date: <%=@user.created_at.to_s.split(' ').first%></p>
           <p>Review count: <%=@user.reviews.count%></p>
