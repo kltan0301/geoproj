@@ -18,12 +18,12 @@
             -
            <%end%>
            / 5 stars</p>
-      <%=link_to "Add Review", new_review_path(attraction_id: @attraction.id), class:'btn btn-primary'%>  
+      <%=link_to "Add Review", new_review_path(attraction_id: @attraction.id), class:'btn btn-primary'%>
       </div>
     </div>
     <div class="col-md-8 col-md-offset-1 sideContainer right">
       <% if @reviews.any? %>
-        <%= render @reviews%>
+        <%= render @reviews %>
       <%else%>
         <h3>There are currently no reviews for this place.</h3>
       <%end%>

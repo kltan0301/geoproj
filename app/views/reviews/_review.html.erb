@@ -4,6 +4,7 @@
     <h3><%=review.user.username%></h3>
 
     <h4>Title: <%=review.title%></h4>
+    <p>Attraction: <%= review.attraction.name  if review.attraction%></p>
     <p>Comments: <%=review.comments%></p>
     <p>Rating: <%=review.rating%>/5</p>
     <span class="timestamp">

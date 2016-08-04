@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :edit, :create, :destroy]
-
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user, only: :destroy
   # GET /reviews
   # GET /reviews.json
   def index
@@ -69,5 +69,10 @@ class ReviewsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
       params.require(:review).permit(:title, :comments, :rating, :user_id, :attraction_id)
+    end
+
+    def correct_user
+      @review = current_user.reviews.find_by(id: params[:id])
+      redirect_to root_url if @review.nil?
     end
 end
