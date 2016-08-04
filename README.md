@@ -16,4 +16,3 @@ A scaled down version of trip advisor where users can view locations of popular 
 
 ##References
 <https://github.com/apneadiving/Google-Maps-for-Rails>
-* ...
