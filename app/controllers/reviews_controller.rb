@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
       redirect_to attraction_path(@review.attraction.id)
     else
       flash.now[:danger] = "Review could not be added."
-      render 'static_pages/home'
+      render 'new'
     end
   end
 
